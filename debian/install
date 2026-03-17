@@ -1,0 +1,4 @@
+app.py /usr/lib/abraflexi-yearend/
+templates/* /usr/lib/abraflexi-yearend/templates/
+translations/* /usr/lib/abraflexi-yearend/translations/
+bin/abraflexi-yearend /usr/bin/

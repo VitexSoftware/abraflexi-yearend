@@ -1,0 +1,24 @@
+Source: abraflexi-yearend
+Section: python
+Priority: optional
+Maintainer: Vítězslav Dvořák <info@vitexsoftware.cz>
+Build-Depends:
+ debhelper-compat (= 13),
+ dh-python,
+Standards-Version: 4.7.0
+Homepage: https://github.com/VitexSoftware/abraflexi-yearend
+Rules-Requires-Root: no
+
+Package: abraflexi-yearend
+Architecture: all
+Multi-Arch: foreign
+Depends:
+ ${misc:Depends},
+ ${python3:Depends},
+ python3-flask,
+ python3-flask-babel,
+ python3-abraflexi,
+Description: AbraFlexi Year-End closing preparation tool
+ This application helps with tax-evidence year-end closing preparation
+ by fetching data from AbraFlexi and providing a checklist and
+ export options.
