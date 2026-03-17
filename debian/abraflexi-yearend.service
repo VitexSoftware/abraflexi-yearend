@@ -1,0 +1,13 @@
+[Unit]
+Description=AbraFlexi Year-End closing preparation tool
+After=network.target
+
+[Service]
+EnvironmentFile=-/etc/abraflexi-yearend/env
+User=www-data
+WorkingDirectory=/usr/lib/abraflexi-yearend
+ExecStart=/usr/bin/gunicorn -b :8911 -w 4 wsgi:app
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

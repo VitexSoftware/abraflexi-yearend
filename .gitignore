@@ -209,3 +209,4 @@ debian/.debhelper/
 debian/abraflexi-yearend/
 debian/debhelper-build-stamp
 debian/abraflexi-yearend.substvars
+debian/abraflexi-yearend.postrm.debhelper
