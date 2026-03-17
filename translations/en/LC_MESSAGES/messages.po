@@ -1,0 +1,329 @@
+# English translations for AbraFlexi Year-End DE
+# Base language
+msgid ""
+msgstr ""
+"Project-Id-Version: abraflexi-yearend 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-01 00:00+0000\n"
+"PO-Revision-Date: 2025-01-01 00:00+0000\n"
+"Last-Translator: \n"
+"Language: en\n"
+"Language-Team: English\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "app.title"
+msgstr "AbraFlexi Year-End DE"
+
+msgid "app.subtitle"
+msgstr "Tax Evidence Year-End Closing Preparation"
+
+msgid "nav.not_connected"
+msgstr "Not connected"
+
+msgid "nav.connecting"
+msgstr "Connecting..."
+
+msgid "nav.connected"
+msgstr "Connected"
+
+msgid "nav.error"
+msgstr "Error"
+
+msgid "connection.panel_title"
+msgstr "AbraFlexi Connection"
+
+msgid "connection.server_url"
+msgstr "Server URL"
+
+msgid "connection.company"
+msgstr "Company"
+
+msgid "connection.username"
+msgstr "Username"
+
+msgid "connection.password"
+msgstr "Password"
+
+msgid "connection.fiscal_year"
+msgstr "Fiscal Year"
+
+msgid "connection.test_btn"
+msgstr "Test Connection"
+
+msgid "connection.success"
+msgstr "Connection successful"
+
+msgid "connection.no_data"
+msgstr "No data"
+
+msgid "modules.panel_title"
+msgstr "DE Outputs"
+
+msgid "modules.overview"
+msgstr "Summary Overview"
+
+msgid "modules.overview_desc"
+msgstr "All registers"
+
+msgid "modules.receivables"
+msgstr "Receivables & Payables"
+
+msgid "modules.receivables_desc"
+msgstr "Issued / received invoices"
+
+msgid "modules.assets"
+msgstr "Asset Register"
+
+msgid "modules.assets_desc"
+msgstr "Asset cards & depreciation"
+
+msgid "modules.cash"
+msgstr "Cash Book"
+
+msgid "modules.cash_desc"
+msgstr "Cash movements"
+
+msgid "modules.bank"
+msgstr "Bank Statements"
+
+msgid "modules.bank_desc"
+msgstr "Bank account movements"
+
+msgid "modules.contacts"
+msgstr "Address Book"
+
+msgid "modules.contacts_desc"
+msgstr "Suppliers & customers"
+
+msgid "modules.inventory"
+msgstr "Stock Inventory"
+
+msgid "modules.inventory_desc"
+msgstr "Warehouse stock cards"
+
+msgid "checklist.title"
+msgstr "Year-End Checklist"
+
+msgid "checklist.item1"
+msgstr "Gather information as of 31.12. – self-employed changes"
+
+msgid "checklist.item2"
+msgstr "Verify validity of internal policies (directives)"
+
+msgid "checklist.item3"
+msgstr "Perform inventory counts and record minutes"
+
+msgid "checklist.item4"
+msgstr "Provisions – creation and release"
+
+msgid "checklist.item5"
+msgstr "Verify tax deductibility of income and expenses"
+
+msgid "checklist.item6"
+msgstr "Assess option of flat-rate expenses"
+
+msgid "checklist.item7"
+msgstr "Print cash journal with cash books"
+
+msgid "checklist.item8"
+msgstr "Receivables & payables book – overdue balances"
+
+msgid "checklist.item9"
+msgstr "Asset register and asset cards (incl. leasing)"
+
+msgid "checklist.item10"
+msgstr "Issued and received invoices – completeness check"
+
+msgid "checklist.item11"
+msgstr "VAT returns and settlements verification"
+
+msgid "checklist.item12"
+msgstr "Payroll, health and social insurance"
+
+msgid "empty.title"
+msgstr "Select an output and load data"
+
+msgid "empty.desc"
+msgstr "Click a module in the left panel and press \"Load data\""
+
+msgid "empty.btn"
+msgstr "Load data from AbraFlexi"
+
+msgid "empty.no_data"
+msgstr "No data"
+
+msgid "table.export_csv"
+msgstr "CSV Export"
+
+msgid "table.records"
+msgstr "records"
+
+msgid "stat.receivables_total"
+msgstr "Total Receivables"
+
+msgid "stat.payables_total"
+msgstr "Total Payables"
+
+msgid "stat.unpaid_receivables"
+msgstr "Unpaid Receivables"
+
+msgid "stat.unpaid_payables"
+msgstr "Unpaid Payables"
+
+msgid "stat.balance"
+msgstr "Balance"
+
+msgid "stat.total_docs"
+msgstr "Total Documents"
+
+msgid "stat.count"
+msgstr "Count"
+
+msgid "stat.acquisition_cost"
+msgstr "Total Acquisition Cost"
+
+msgid "stat.residual_value"
+msgstr "Residual Value"
+
+msgid "stat.depreciation"
+msgstr "Total Depreciation"
+
+msgid "stat.movements"
+msgstr "Movements"
+
+msgid "stat.income"
+msgstr "Income"
+
+msgid "stat.expenses"
+msgstr "Expenses"
+
+msgid "stat.contacts_count"
+msgstr "Contacts"
+
+msgid "stat.stock_cards"
+msgstr "Stock Cards"
+
+msgid "stat.stock_value"
+msgstr "Stock Value"
+
+msgid "col.code"
+msgstr "Code"
+
+msgid "col.company"
+msgstr "Company"
+
+msgid "col.var_sym"
+msgstr "Ref. No."
+
+msgid "col.issue_date"
+msgstr "Issue Date"
+
+msgid "col.due_date"
+msgstr "Due Date"
+
+msgid "col.amount"
+msgstr "Amount"
+
+msgid "col.status"
+msgstr "Status"
+
+msgid "col.name"
+msgstr "Name"
+
+msgid "col.type"
+msgstr "Type"
+
+msgid "col.acq_date"
+msgstr "Acquired"
+
+msgid "col.acq_price"
+msgstr "Acq. Price"
+
+msgid "col.residual"
+msgstr "Residual"
+
+msgid "col.depr_group"
+msgstr "Depr. Grp."
+
+msgid "col.date"
+msgstr "Date"
+
+msgid "col.description"
+msgstr "Description"
+
+msgid "col.doc"
+msgstr "Document"
+
+msgid "col.reg_no"
+msgstr "Reg. No."
+
+msgid "col.vat_no"
+msgstr "VAT No."
+
+msgid "col.email"
+msgstr "Email"
+
+msgid "col.phone"
+msgstr "Phone"
+
+msgid "col.city"
+msgstr "City"
+
+msgid "col.qty"
+msgstr "Qty"
+
+msgid "col.buy_price"
+msgstr "Buy Price"
+
+msgid "col.sell_price"
+msgstr "Sell Price"
+
+msgid "col.warehouse"
+msgstr "Warehouse"
+
+msgid "status.paid"
+msgstr "paid"
+
+msgid "status.partial"
+msgstr "partial"
+
+msgid "status.unpaid"
+msgstr "unpaid"
+
+msgid "table.issued_invoices"
+msgstr "Issued Invoices – Receivables"
+
+msgid "table.received_invoices"
+msgstr "Received Invoices – Payables"
+
+msgid "table.asset_register"
+msgstr "Asset Register"
+
+msgid "table.cash_book"
+msgstr "Cash Book"
+
+msgid "table.bank_statements"
+msgstr "Bank Statements"
+
+msgid "table.address_book"
+msgstr "Address Book"
+
+msgid "table.stock_inventory"
+msgstr "Stock Inventory"
+
+msgid "alert.export_done"
+msgstr "CSV export complete"
+
+msgid "alert.no_export_data"
+msgstr "No data to export"
+
+msgid "alert.loading"
+msgstr "Loading data from AbraFlexi..."
+
+msgid "module.selected"
+msgstr "Module selected"
+
+msgid "module.selected_desc"
+msgstr "Press the button to load data from AbraFlexi"

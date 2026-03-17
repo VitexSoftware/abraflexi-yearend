@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en" id="html-root">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AbraFlexi Year-End DE</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0f14;
+    --surface: #161923;
+    --surface2: #1e2535;
+    --border: #2a3350;
+    --accent: #4af0a8;
+    --accent2: #7b6cff;
+    --warn: #f0a84a;
+    --danger: #f05c4a;
+    --text: #dde4f0;
+    --muted: #6b7a9a;
+    --mono: 'IBM Plex Mono', monospace;
+    --sans: 'Syne', sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: var(--sans); min-height: 100vh; overflow-x: hidden; }
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: linear-gradient(rgba(74,240,168,0.03) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(74,240,168,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none; z-index: 0;
+  }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+
+  header {
+    border-bottom: 1px solid var(--border);
+    padding: 16px 0;
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(13,15,20,0.92);
+    backdrop-filter: blur(12px);
+  }
+  .header-inner { display: flex; align-items: center; gap: 16px; }
+  .logo-badge {
+    width: 42px; height: 42px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--mono); font-weight: 600; font-size: 13px; color: #000;
+    flex-shrink: 0;
+  }
+  .header-titles h1 { font-size: 18px; font-weight: 800; letter-spacing: -0.5px; }
+  .header-titles span { font-size: 12px; color: var(--muted); font-family: var(--mono); letter-spacing: 0.5px; }
+  .header-right { margin-left: auto; display: flex; align-items: center; gap: 16px; }
+
+  /* Language switcher */
+  .lang-switcher { display: flex; gap: 4px; }
+  .lang-btn {
+    padding: 4px 10px; border-radius: 6px; cursor: pointer;
+    font-family: var(--mono); font-size: 11px; font-weight: 600;
+    border: 1px solid var(--border);
+    background: var(--surface2); color: var(--muted);
+    transition: all 0.15s; text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  .lang-btn.active { background: rgba(74,240,168,0.15); color: var(--accent); border-color: rgba(74,240,168,0.4); }
+  .lang-btn:hover:not(.active) { border-color: var(--accent2); color: var(--text); }
+
+  .header-status { display: flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 12px; color: var(--muted); }
+  .status-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border); transition: background 0.3s; }
+  .status-dot.connected { background: var(--accent); box-shadow: 0 0 8px var(--accent); }
+  .status-dot.error { background: var(--danger); }
+
+  main { display: grid; grid-template-columns: 300px 1fr; gap: 24px; padding: 24px 0 60px; }
+
+  .panel { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+  .panel-header { padding: 16px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
+  .panel-icon { font-size: 16px; }
+  .panel-title { font-size: 13px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; color: var(--muted); }
+  .panel-body { padding: 20px; }
+
+  .form-group { margin-bottom: 14px; }
+  label { display: block; font-size: 11px; color: var(--muted); font-family: var(--mono); letter-spacing: 0.5px; margin-bottom: 6px; text-transform: uppercase; }
+  input, select {
+    width: 100%; background: var(--surface2); border: 1px solid var(--border);
+    color: var(--text); padding: 9px 12px; border-radius: 8px;
+    font-family: var(--mono); font-size: 13px; outline: none; transition: border-color 0.2s;
+  }
+  input:focus, select:focus { border-color: var(--accent2); }
+  input::placeholder { color: var(--muted); }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 10px 18px; border-radius: 8px;
+    font-family: var(--sans); font-weight: 700; font-size: 13px;
+    cursor: pointer; border: none; transition: all 0.2s;
+  }
+  .btn-primary { background: linear-gradient(135deg, var(--accent), #2ad4a0); color: #000; }
+  .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+  .btn-secondary { background: var(--surface2); border: 1px solid var(--border); color: var(--text); }
+  .btn-secondary:hover { border-color: var(--accent2); }
+  .btn-sm { padding: 6px 12px; font-size: 12px; }
+  .btn-full { width: 100%; justify-content: center; }
+
+  .module-list { display: flex; flex-direction: column; gap: 8px; }
+  .module-item {
+    display: flex; align-items: center; gap: 12px;
+    padding: 12px 14px; background: var(--surface2);
+    border: 1px solid var(--border); border-radius: 10px;
+    cursor: pointer; transition: all 0.18s; position: relative; overflow: hidden;
+  }
+  .module-item::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+    width: 3px; background: transparent; transition: background 0.2s;
+  }
+  .module-item:hover::before { background: var(--accent2); }
+  .module-item.active::before { background: var(--accent); }
+  .module-item.active { border-color: rgba(74,240,168,0.3); background: rgba(74,240,168,0.05); }
+  .module-item:hover { border-color: var(--accent2); }
+  .module-icon { font-size: 18px; flex-shrink: 0; }
+  .module-info { flex: 1; min-width: 0; }
+  .module-name { font-size: 13px; font-weight: 700; }
+  .module-desc { font-size: 11px; color: var(--muted); font-family: var(--mono); margin-top: 2px; }
+  .module-badge {
+    font-family: var(--mono); font-size: 10px;
+    padding: 2px 7px; border-radius: 4px; background: var(--border); color: var(--muted);
+  }
+  .module-item.active .module-badge { background: rgba(74,240,168,0.15); color: var(--accent); }
+
+  .right-panel { display: flex; flex-direction: column; gap: 20px; }
+  .stats-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px; }
+  .stat-label { font-size: 11px; color: var(--muted); font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.5px; }
+  .stat-value { font-size: 22px; font-weight: 800; margin-top: 6px; }
+  .stat-value.green { color: var(--accent); }
+  .stat-value.purple { color: var(--accent2); }
+  .stat-value.orange { color: var(--warn); }
+
+  .table-container { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+  .table-toolbar { padding: 14px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 12px; }
+  .table-toolbar-title { font-size: 14px; font-weight: 700; flex: 1; }
+  .data-table { width: 100%; border-collapse: collapse; }
+  .data-table th {
+    padding: 10px 14px; text-align: left;
+    font-size: 10px; font-family: var(--mono); font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted);
+    border-bottom: 1px solid var(--border); background: var(--surface2); white-space: nowrap;
+  }
+  .data-table td {
+    padding: 10px 14px; font-size: 12px; font-family: var(--mono);
+    border-bottom: 1px solid rgba(42,51,80,0.5);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;
+  }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table tr:hover td { background: rgba(255,255,255,0.02); }
+  .table-scroll { overflow-x: auto; max-height: 420px; overflow-y: auto; }
+
+  .pill { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 700; letter-spacing: 0.3px; }
+  .pill-green { background: rgba(74,240,168,0.15); color: var(--accent); }
+  .pill-orange { background: rgba(240,168,74,0.15); color: var(--warn); }
+  .pill-red { background: rgba(240,92,74,0.15); color: var(--danger); }
+  .pill-gray { background: var(--border); color: var(--muted); }
+
+  .empty-state { text-align: center; padding: 60px 20px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+  .empty-icon { font-size: 48px; opacity: 0.4; }
+  .empty-title { font-size: 16px; font-weight: 700; color: var(--muted); }
+  .empty-desc { font-size: 13px; color: var(--muted); font-family: var(--mono); opacity: 0.7; }
+
+  .loading { text-align: center; padding: 40px; display: flex; flex-direction: column; align-items: center; gap: 16px; }
+  .spinner { width: 36px; height: 36px; border: 3px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .checklist { padding: 0; list-style: none; }
+  .checklist li {
+    padding: 10px 20px; border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 12px;
+    font-size: 13px; cursor: pointer; transition: background 0.15s;
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist li:hover { background: rgba(255,255,255,0.02); }
+  .check-icon { width: 20px; height: 20px; flex-shrink: 0; }
+  .check-done { color: var(--accent); }
+  .check-todo { color: var(--border); }
+  .check-warn { color: var(--warn); }
+
+  .alert {
+    padding: 12px 16px; border-radius: 8px; font-size: 13px; font-family: var(--mono);
+    display: flex; align-items: center; gap: 10px; margin-bottom: 8px;
+    animation: slideIn 0.2s ease;
+  }
+  @keyframes slideIn { from { opacity:0; transform: translateX(20px); } to { opacity:1; transform: translateX(0); } }
+  .alert-success { background: rgba(74,240,168,0.1); border: 1px solid rgba(74,240,168,0.3); color: var(--accent); }
+  .alert-error { background: rgba(240,92,74,0.1); border: 1px solid rgba(240,92,74,0.3); color: var(--danger); }
+  .alert-warning { background: rgba(240,168,74,0.1); border: 1px solid rgba(240,168,74,0.3); color: var(--warn); }
+
+  #alert-container { position: fixed; top: 80px; right: 20px; z-index: 200; width: 320px; }
+  .overdue-row td { color: var(--danger) !important; }
+  .soon-row td { color: var(--warn) !important; }
+  .amount-positive { color: var(--accent); }
+  .amount-negative { color: var(--danger); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="header-inner">
+      <div class="logo-badge">AF</div>
+      <div class="header-titles">
+        <h1 data-i18n="app.title">AbraFlexi Year-End DE</h1>
+        <span data-i18n="app.subtitle">Tax Evidence Year-End Closing Preparation</span>
+      </div>
+      <div class="header-right">
+        <div class="lang-switcher">
+          <button class="lang-btn" id="lang-en" onclick="switchLang('en')">EN</button>
+          <button class="lang-btn" id="lang-cs" onclick="switchLang('cs')">CS</button>
+        </div>
+        <div class="header-status">
+          <div class="status-dot" id="conn-dot"></div>
+          <span id="conn-label" data-i18n="nav.not_connected">Not connected</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div id="alert-container"></div>
+
+<div class="container">
+  <main>
+    <aside>
+      <div class="panel" style="margin-bottom:20px">
+        <div class="panel-header">
+          <span class="panel-icon">🔌</span>
+          <span class="panel-title" data-i18n="connection.panel_title">Connection</span>
+        </div>
+        <div class="panel-body">
+          <div class="form-group">
+            <label data-i18n="connection.server_url">Server URL</label>
+            <input type="text" id="inp-url" placeholder="https://server:5434" value="https://demo.abraflexi.eu:5434">
+          </div>
+          <div class="form-group">
+            <label data-i18n="connection.company">Company</label>
+            <input type="text" id="inp-company" placeholder="my_company" value="demo">
+          </div>
+          <div class="form-group">
+            <label data-i18n="connection.username">Username</label>
+            <input type="text" id="inp-user" placeholder="winstrom" value="winstrom">
+          </div>
+          <div class="form-group">
+            <label data-i18n="connection.password">Password</label>
+            <input type="password" id="inp-password" placeholder="••••••••" value="winstrom">
+          </div>
+          <div class="form-group">
+            <label data-i18n="connection.fiscal_year">Fiscal Year</label>
+            <select id="inp-year">
+              <option value="2025" selected>2025</option>
+              <option value="2024">2024</option>
+              <option value="2023">2023</option>
+              <option value="2022">2022</option>
+            </select>
+          </div>
+          <button class="btn btn-primary btn-full" onclick="testConnection()">
+            ⚡ <span data-i18n="connection.test_btn">Test Connection</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-header">
+          <span class="panel-icon">📋</span>
+          <span class="panel-title" data-i18n="modules.panel_title">DE Outputs</span>
+        </div>
+        <div class="panel-body" style="padding:12px">
+          <div class="module-list">
+            <div class="module-item active" onclick="selectModule(this,'all')" data-module="all">
+              <span class="module-icon">📊</span>
+              <div class="module-info">
+                <div class="module-name" data-i18n="modules.overview">Summary Overview</div>
+                <div class="module-desc" data-i18n="modules.overview_desc">All registers</div>
+              </div>
+              <span class="module-badge">ALL</span>
+            </div>
+            <div class="module-item" onclick="selectModule(this,'pohledavky_zavazky')" data-module="pohledavky_zavazky">
+              <span class="module-icon">💰</span>
+              <div class="module-info">
+                <div class="module-name" data-i18n="modules.receivables">Receivables & Payables</div>
+                <div class="module-desc" data-i18n="modules.receivables_desc">Issued / received invoices</div>
+              </div>
+              <span class="module-badge">FAK</span>
+            </div>
+            <div class="module-item" onclick="selectModule(this,'majetek')" data-module="majetek">
+              <span class="module-icon">🏗️</span>
+              <div class="module-info">
+                <div class="module-name" data-i18n="modules.assets">Asset Register</div>
+                <div class="module-desc" data-i18n="modules.assets_desc">Asset cards & depreciation</div>
+              </div>
+              <span class="module-badge">MAJ</span>
+            </div>
+            <div class="module-item" onclick="selectModule(this,'pokladna')" data-module="pokladna">
+              <span class="module-icon">🪙</span>
+              <div class="module-info">
+                <div class="module-name" data-i18n="modules.cash">Cash Book</div>
+                <div class="module-desc" data-i18n="modules.cash_desc">Cash movements</div>
+              </div>
+              <span class="module-badge">POK</span>
+            </div>
+            <div class="module-item" onclick="selectModule(this,'banka')" data-module="banka">
+              <span class="module-icon">🏦</span>
+              <div class="module-info">
+                <div class="module-name" data-i18n="modules.bank">Bank Statements</div>
+                <div class="module-desc" data-i18n="modules.bank_desc">Bank account movements</div>
+              </div>
+              <span class="module-badge">BNK</span>
+            </div>
+            <div class="module-item" onclick="selectModule(this,'adresar')" data-module="adresar">
+              <span class="module-icon">👥</span>
+              <div class="module-info">
+                <div class="module-name" data-i18n="modules.contacts">Address Book</div>
+                <div class="module-desc" data-i18n="modules.contacts_desc">Suppliers & customers</div>
+              </div>
+              <span class="module-badge">ADR</span>
+            </div>
+            <div class="module-item" onclick="selectModule(this,'inventura')" data-module="inventura">
+              <span class="module-icon">📦</span>
+              <div class="module-info">
+                <div class="module-name" data-i18n="modules.inventory">Stock Inventory</div>
+                <div class="module-desc" data-i18n="modules.inventory_desc">Warehouse stock cards</div>
+              </div>
+              <span class="module-badge">SKL</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <div class="right-panel">
+      <div class="panel" id="checklist-panel">
+        <div class="panel-header">
+          <span class="panel-icon">✅</span>
+          <span class="panel-title" data-i18n="checklist.title">Year-End Checklist</span>
+        </div>
+        <ul class="checklist" id="checklist">
+          <li onclick="toggleCheck(this)"><span class="check-icon check-todo">○</span> <span data-i18n="checklist.item1"></span></li>
+          <li onclick="toggleCheck(this)"><span class="check-icon check-todo">○</span> <span data-i18n="checklist.item2"></span></li>
+          <li onclick="toggleCheck(this)"><span class="check-icon check-todo">○</span> <span data-i18n="checklist.item3"></span></li>
+          <li onclick="toggleCheck(this)"><span class="check-icon check-todo">○</span> <span data-i18n="checklist.item4"></span></li>
+          <li onclick="toggleCheck(this)"><span class="check-icon check-todo">○</span> <span data-i18n="checklist.item5"></span></li>
+          <li onclick="toggleCheck(this)"><span class="check-icon check-todo">○</span> <span data-i18n="checklist.item6"></span></li>
+          <li onclick="toggleCheck(this)"><span class="check-icon check-todo">○</span> <span data-i18n="checklist.item7"></span></li>
+          <li onclick="toggleCheck(this)"><span class="check-icon check-todo">○</span> <span data-i18n="checklist.item8"></span></li>
+          <li onclick="toggleCheck(this)"><span class="check-icon check-todo">○</span> <span data-i18n="checklist.item9"></span></li>
+          <li onclick="toggleCheck(this)"><span class="check-icon check-todo">○</span> <span data-i18n="checklist.item10"></span></li>
+          <li onclick="toggleCheck(this)"><span class="check-icon check-todo">○</span> <span data-i18n="checklist.item11"></span></li>
+          <li onclick="toggleCheck(this)"><span class="check-icon check-todo">○</span> <span data-i18n="checklist.item12"></span></li>
+        </ul>
+      </div>
+
+      <div id="data-area">
+        <div class="panel">
+          <div class="empty-state">
+            <div class="empty-icon">🗂️</div>
+            <div class="empty-title" data-i18n="empty.title">Select an output and load data</div>
+            <div class="empty-desc" data-i18n="empty.desc">Click a module in the left panel and press "Load data"</div>
+            <button class="btn btn-primary" style="margin-top:16px" onclick="fetchData()">
+              📥 <span data-i18n="empty.btn">Load data from AbraFlexi</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+// =============================================================================
+// i18n runtime
+// =============================================================================
+const i18n = {
+  locale: '{{ locale }}',
+  translations: {},
+
+  async load(lang) {
+    const url = `/api/i18n/catalogue${lang ? '?lang=' + lang : ''}`;
+    const r = await fetch(url);
+    const d = await r.json();
+    this.translations = d.translations;
+    this.locale = d.locale;
+    document.documentElement.lang = this.locale;
+    this.applyAll();
+    this.updateLangButtons();
+  },
+
+  t(key) {
+    return this.translations[key] || key;
+  },
+
+  applyAll() {
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      el.textContent = this.t(key);
+    });
+  },
+
+  updateLangButtons() {
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+    const active = document.getElementById('lang-' + this.locale);
+    if (active) active.classList.add('active');
+  }
+};
+
+async function switchLang(lang) {
+  // Persist preference via cookie through the API
+  await fetch('/api/i18n/set-language', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({lang})
+  });
+  await i18n.load(lang);
+  // Re-render current data if any is displayed
+  if (Object.keys(currentData).length) {
+    renderData(currentData, currentModule, document.getElementById('inp-year').value);
+  }
+}
+
+// =============================================================================
+// App state
+// =============================================================================
+let currentModule = 'all';
+let currentData = {};
+
+function getConnection() {
+  return {
+    url: document.getElementById('inp-url').value.trim(),
+    company: document.getElementById('inp-company').value.trim(),
+    user: document.getElementById('inp-user').value.trim(),
+    password: document.getElementById('inp-password').value.trim(),
+  };
+}
+
+function selectModule(el, module) {
+  document.querySelectorAll('.module-item').forEach(m => m.classList.remove('active'));
+  el.classList.add('active');
+  currentModule = module;
+  const name = el.querySelector('.module-name').textContent;
+  document.getElementById('data-area').innerHTML = `
+    <div class="panel">
+      <div class="empty-state">
+        <div class="empty-icon">🗂️</div>
+        <div class="empty-title">${i18n.t('module.selected')}: ${name}</div>
+        <div class="empty-desc">${i18n.t('module.selected_desc')}</div>
+        <button class="btn btn-primary" style="margin-top:16px" onclick="fetchData()">
+          📥 ${i18n.t('empty.btn')}
+        </button>
+      </div>
+    </div>`;
+}
+
+function showAlert(msg, type = 'success') {
+  const c = document.getElementById('alert-container');
+  const d = document.createElement('div');
+  d.className = `alert alert-${type}`;
+  d.innerHTML = `<span>${type === 'success' ? '✓' : type === 'error' ? '✗' : '⚠'}</span> ${msg}`;
+  c.appendChild(d);
+  setTimeout(() => d.remove(), 4000);
+}
+
+async function testConnection() {
+  const conn = getConnection();
+  const dot = document.getElementById('conn-dot');
+  const label = document.getElementById('conn-label');
+  label.textContent = i18n.t('nav.connecting');
+  dot.className = 'status-dot';
+  try {
+    const r = await fetch('/api/test-connection', {
+      method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(conn)
+    });
+    const d = await r.json();
+    if (d.success) {
+      dot.className = 'status-dot connected';
+      label.textContent = i18n.t('nav.connected');
+      showAlert(i18n.t('connection.success'), 'success');
+    } else {
+      dot.className = 'status-dot error';
+      label.textContent = i18n.t('nav.error');
+      showAlert(d.message, 'error');
+    }
+  } catch(e) {
+    dot.className = 'status-dot error';
+    label.textContent = i18n.t('nav.error');
+    showAlert(e.message, 'error');
+  }
+}
+
+async function fetchData() {
+  const year = document.getElementById('inp-year').value;
+  document.getElementById('data-area').innerHTML = `
+    <div class="panel">
+      <div class="loading">
+        <div class="spinner"></div>
+        <span style="font-family:var(--mono);font-size:13px;color:var(--muted)">${i18n.t('alert.loading')}</span>
+      </div>
+    </div>`;
+  try {
+    const r = await fetch('/api/fetch', {
+      method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({connection: getConnection(), module: currentModule, year: parseInt(year)})
+    });
+    const d = await r.json();
+    if (d.success) {
+      currentData = d.data;
+      renderData(d.data, currentModule, year);
+    } else {
+      document.getElementById('data-area').innerHTML = `
+        <div class="panel"><div class="empty-state">
+          <div class="empty-icon">⚠️</div>
+          <div class="empty-title">${i18n.t('nav.error')}</div>
+          <div class="empty-desc">${d.message}</div>
+        </div></div>`;
+    }
+  } catch(e) {
+    document.getElementById('data-area').innerHTML = `
+      <div class="panel"><div class="empty-state">
+        <div class="empty-icon">❌</div>
+        <div class="empty-title">${i18n.t('nav.error')}</div>
+        <div class="empty-desc">${e.message}</div>
+      </div></div>`;
+  }
+}
+
+// =============================================================================
+// Render helpers
+// =============================================================================
+function fmt(n) {
+  if (isNaN(n)) return '—';
+  return new Intl.NumberFormat(i18n.locale === 'cs' ? 'cs-CZ' : 'en-US', {maximumFractionDigits: 2}).format(n);
+}
+
+function statCard(label, value, cls = '') {
+  return `<div class="stat-card"><div class="stat-label">${label}</div><div class="stat-value ${cls}">${value}</div></div>`;
+}
+
+function renderData(data, module, year) {
+  const area = document.getElementById('data-area');
+  let html = '';
+  const t = k => i18n.t(k);
+
+  if (module === 'all') {
+    const issued = data.issued_invoices || [];
+    const received = data.received_invoices || [];
+    const assets = data.assets || [];
+    const cash = data.cash || [];
+    const tVyd = issued.reduce((s, r) => s + (parseFloat(r.sumCelkem) || 0), 0);
+    const tPrij = received.reduce((s, r) => s + (parseFloat(r.sumCelkem) || 0), 0);
+    const uVyd = issued.filter(r => r.stavUhrK && r.stavUhrK !== 'stavUhr.uhrazeno').length;
+    const uPrij = received.filter(r => r.stavUhrK && r.stavUhrK !== 'stavUhr.uhrazeno').length;
+    html += `<div class="stats-bar">
+      ${statCard(t('stat.receivables_total'), fmt(tVyd) + ' Kč', 'green')}
+      ${statCard(t('stat.payables_total'), fmt(tPrij) + ' Kč', 'purple')}
+      ${statCard(t('stat.unpaid_receivables'), uVyd + ' ks', 'orange')}
+      ${statCard(t('stat.unpaid_payables'), uPrij + ' ks', 'orange')}
+    </div>`;
+    html += tableCard('📤 ' + t('table.issued_invoices'), issued, 'issued_invoices',
+      ['kod','firma','varSym','datVyst','datSplat','sumCelkem','stavUhrK'],
+      [t('col.code'),t('col.company'),t('col.var_sym'),t('col.issue_date'),t('col.due_date'),t('col.amount'),t('col.status')]);
+    html += tableCard('📥 ' + t('table.received_invoices'), received, 'received_invoices',
+      ['kod','firma','varSym','datVyst','datSplat','sumCelkem','stavUhrK'],
+      [t('col.code'),t('col.company'),t('col.var_sym'),t('col.issue_date'),t('col.due_date'),t('col.amount'),t('col.status')]);
+    html += tableCard('🏗️ ' + t('table.asset_register'), assets, 'assets',
+      ['kod','nazev','typMajetkuK','datPoriz','cenaPoriz','zustatkovaCena'],
+      [t('col.code'),t('col.name'),t('col.type'),t('col.acq_date'),t('col.acq_price'),t('col.residual')]);
+    html += tableCard('🪙 ' + t('table.cash_book'), cash, 'cash',
+      ['kod','popis','castka','typPohybuK','datVyst'],
+      [t('col.code'),t('col.description'),t('col.amount'),t('col.type'),t('col.date')]);
+
+  } else if (module === 'pohledavky_zavazky') {
+    const issued = data.issued_invoices || [];
+    const received = data.received_invoices || [];
+    const tV = issued.reduce((s,r)=>s+(parseFloat(r.sumCelkem)||0),0);
+    const tP = received.reduce((s,r)=>s+(parseFloat(r.sumCelkem)||0),0);
+    const saldo = tV - tP;
+    html += `<div class="stats-bar">
+      ${statCard(t('stat.receivables_total'), fmt(tV)+' Kč','green')}
+      ${statCard(t('stat.payables_total'), fmt(tP)+' Kč','purple')}
+      ${statCard(t('stat.balance'), `<span style="color:${saldo>=0?'var(--accent)':'var(--danger)'}">${fmt(saldo)} Kč</span>`)}
+      ${statCard(t('stat.total_docs'), issued.length + received.length)}
+    </div>`;
+    html += tableCard('📤 '+t('table.issued_invoices'), issued, 'issued_invoices',
+      ['kod','firma','varSym','datVyst','datSplat','sumCelkem','stavUhrK'],
+      [t('col.code'),t('col.company'),t('col.var_sym'),t('col.issue_date'),t('col.due_date'),t('col.amount'),t('col.status')]);
+    html += tableCard('📥 '+t('table.received_invoices'), received, 'received_invoices',
+      ['kod','firma','varSym','datVyst','datSplat','sumCelkem','stavUhrK'],
+      [t('col.code'),t('col.company'),t('col.var_sym'),t('col.issue_date'),t('col.due_date'),t('col.amount'),t('col.status')]);
+
+  } else if (module === 'majetek') {
+    const rows = data.assets || [];
+    const tC = rows.reduce((s,r)=>s+(parseFloat(r.cenaPoriz)||0),0);
+    const tZ = rows.reduce((s,r)=>s+(parseFloat(r.zustatkovaCena)||0),0);
+    html += `<div class="stats-bar">
+      ${statCard(t('stat.count'), rows.length)}
+      ${statCard(t('stat.acquisition_cost'), fmt(tC)+' Kč','green')}
+      ${statCard(t('stat.residual_value'), fmt(tZ)+' Kč','purple')}
+      ${statCard(t('stat.depreciation'), fmt(tC-tZ)+' Kč','orange')}
+    </div>`;
+    html += tableCard('🏗️ '+t('table.asset_register'), rows, 'assets',
+      ['kod','nazev','typMajetkuK','datPoriz','cenaPoriz','zustatkovaCena','odpisGroup'],
+      [t('col.code'),t('col.name'),t('col.type'),t('col.acq_date'),t('col.acq_price'),t('col.residual'),t('col.depr_group')]);
+
+  } else if (module === 'pokladna') {
+    const rows = data.cash || [];
+    const inc = rows.filter(r=>parseFloat(r.castka)>0).reduce((s,r)=>s+parseFloat(r.castka),0);
+    const exp = rows.filter(r=>parseFloat(r.castka)<0).reduce((s,r)=>s+parseFloat(r.castka),0);
+    html += `<div class="stats-bar">
+      ${statCard(t('stat.movements'), rows.length)}
+      ${statCard(t('stat.income'), fmt(inc)+' Kč','green')}
+      ${statCard(t('stat.expenses'), fmt(Math.abs(exp))+' Kč','purple')}
+      ${statCard(t('stat.balance'), fmt(inc+exp)+' Kč')}
+    </div>`;
+    html += tableCard('🪙 '+t('table.cash_book'), rows, 'cash',
+      ['kod','datVyst','popis','castka','typPohybuK','doklad'],
+      [t('col.code'),t('col.date'),t('col.description'),t('col.amount'),t('col.type'),t('col.doc')]);
+
+  } else if (module === 'banka') {
+    const rows = data.bank || [];
+    const inc = rows.filter(r=>parseFloat(r.castka)>0).reduce((s,r)=>s+parseFloat(r.castka),0);
+    const exp = rows.filter(r=>parseFloat(r.castka)<0).reduce((s,r)=>s+parseFloat(r.castka),0);
+    html += `<div class="stats-bar">
+      ${statCard(t('stat.movements'), rows.length)}
+      ${statCard(t('stat.income'), fmt(inc)+' Kč','green')}
+      ${statCard(t('stat.expenses'), fmt(Math.abs(exp))+' Kč','purple')}
+      ${statCard(t('stat.balance'), fmt(inc+exp)+' Kč')}
+    </div>`;
+    html += tableCard('🏦 '+t('table.bank_statements'), rows, 'bank',
+      ['kod','datVyst','firma','popis','castka','typPohybuK'],
+      [t('col.code'),t('col.date'),t('col.company'),t('col.description'),t('col.amount'),t('col.type')]);
+
+  } else if (module === 'adresar') {
+    const rows = data.contacts || [];
+    html += `<div class="stats-bar" style="grid-template-columns:repeat(2,1fr);max-width:300px">
+      ${statCard(t('stat.contacts_count'), rows.length)}
+    </div>`;
+    html += tableCard('👥 '+t('table.address_book'), rows, 'contacts',
+      ['kod','nazev','ic','dic','email','tel','mesto'],
+      [t('col.code'),t('col.name'),t('col.reg_no'),t('col.vat_no'),t('col.email'),t('col.phone'),t('col.city')]);
+
+  } else if (module === 'inventura') {
+    const rows = data.stock || [];
+    const val = rows.reduce((s,r)=>s+((parseFloat(r.cenaNakup)||0)*(parseFloat(r.mnozMj)||0)),0);
+    html += `<div class="stats-bar" style="grid-template-columns:repeat(3,1fr)">
+      ${statCard(t('stat.stock_cards'), rows.length)}
+      ${statCard(t('stat.stock_value'), fmt(val)+' Kč','green')}
+    </div>`;
+    html += tableCard('📦 '+t('table.stock_inventory'), rows, 'stock',
+      ['kod','nazev','mnozMj','cenaNakup','cenaProdej','sklad'],
+      [t('col.code'),t('col.name'),t('col.qty'),t('col.buy_price'),t('col.sell_price'),t('col.warehouse')]);
+  }
+
+  area.innerHTML = html;
+}
+
+function tableCard(title, rows, key, fields, headers) {
+  const t = k => i18n.t(k);
+  if (!rows || rows.length === 0) {
+    return `<div class="table-container" style="margin-bottom:16px">
+      <div class="table-toolbar"><span class="table-toolbar-title">${title}</span></div>
+      <div class="empty-state" style="padding:30px">
+        <div class="empty-icon" style="font-size:32px">📭</div>
+        <div class="empty-title" style="font-size:13px">${t('empty.no_data')}</div>
+      </div>
+    </div>`;
+  }
+  const today = new Date();
+  const trows = rows.map(r => {
+    let rowClass = '';
+    if (r.datSplat) {
+      const splat = new Date(r.datSplat);
+      const diff = (splat - today) / (1000*60*60*24);
+      if (diff < 0 && r.stavUhrK !== 'stavUhr.uhrazeno') rowClass = 'overdue-row';
+      else if (diff < 14 && diff >= 0 && r.stavUhrK !== 'stavUhr.uhrazeno') rowClass = 'soon-row';
+    }
+    const cells = fields.map(f => {
+      let v = r[f] ?? '';
+      if (f === 'stavUhrK') {
+        if (v === 'stavUhr.uhrazeno') v = `<span class="pill pill-green">${t('status.paid')}</span>`;
+        else if (v === 'stavUhr.castecneUhrazeno') v = `<span class="pill pill-orange">${t('status.partial')}</span>`;
+        else if (v) v = `<span class="pill pill-red">${t('status.unpaid')}</span>`;
+        else v = `<span class="pill pill-gray">—</span>`;
+      } else if (['castka','sumCelkem','cenaPoriz','zustatkovaCena','cenaNakup','cenaProdej'].includes(f)) {
+        const num = parseFloat(v);
+        if (!isNaN(num)) {
+          v = `<span class="${num < 0 ? 'amount-negative' : num > 0 ? 'amount-positive' : ''}">${fmt(num)}</span>`;
+        }
+      } else if (typeof v === 'string' && v.includes('T')) {
+        v = v.split('T')[0];
+      } else if (v && typeof v === 'object' && v['@ref']) {
+        v = v['@ref'].split('/').pop() || '';
+      }
+      return `<td title="${String(v).replace(/<[^>]+>/g,'')}">${v}</td>`;
+    }).join('');
+    return `<tr class="${rowClass}">${cells}</tr>`;
+  }).join('');
+
+  return `<div class="table-container" style="margin-bottom:16px">
+    <div class="table-toolbar">
+      <span class="table-toolbar-title">${title} <span style="color:var(--muted);font-size:11px;font-family:var(--mono)">(${rows.length} ${t('table.records')})</span></span>
+      <button class="btn btn-secondary btn-sm" onclick="exportCSV('${key}')">⬇ ${t('table.export_csv')}</button>
+    </div>
+    <div class="table-scroll">
+      <table class="data-table">
+        <thead><tr>${headers.map(h => `<th>${h}</th>`).join('')}</tr></thead>
+        <tbody>${trows}</tbody>
+      </table>
+    </div>
+  </div>`;
+}
+
+function toggleCheck(li) {
+  const icon = li.querySelector('.check-icon');
+  if (icon.classList.contains('check-todo')) {
+    icon.classList.replace('check-todo','check-done'); icon.textContent = '✓';
+  } else if (icon.classList.contains('check-done')) {
+    icon.classList.replace('check-done','check-warn'); icon.textContent = '⚠';
+  } else {
+    icon.classList.replace('check-warn','check-todo'); icon.textContent = '○';
+  }
+}
+
+async function exportCSV(key) {
+  const rows = currentData[key];
+  if (!rows || !rows.length) { showAlert(i18n.t('alert.no_export_data'), 'warning'); return; }
+  const cleaned = rows.map(r => {
+    const out = {};
+    for (const [k, v] of Object.entries(r)) {
+      out[k] = (v && typeof v === 'object') ? JSON.stringify(v) : (v ?? '');
+    }
+    return out;
+  });
+  const r = await fetch('/api/export-csv', {
+    method: 'POST', headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({rows: cleaned, title: key})
+  });
+  if (r.ok) {
+    const blob = await r.blob();
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = `${key}_${new Date().toISOString().slice(0,10)}.csv`;
+    a.click();
+    showAlert(i18n.t('alert.export_done'), 'success');
+  }
+}
+
+// =============================================================================
+// Bootstrap – load i18n catalogue on page load
+// =============================================================================
+(async () => {
+  await i18n.load(); // uses server-negotiated locale via cookie/Accept-Language
+})();
+</script>
+</body>
+</html>

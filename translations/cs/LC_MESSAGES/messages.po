@@ -1,0 +1,328 @@
+# Czech translations for AbraFlexi Year-End DE
+msgid ""
+msgstr ""
+"Project-Id-Version: abraflexi-yearend 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-01 00:00+0000\n"
+"PO-Revision-Date: 2025-01-01 00:00+0000\n"
+"Last-Translator: \n"
+"Language: cs\n"
+"Language-Team: Czech\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "app.title"
+msgstr "AbraFlexi Závěrka DE"
+
+msgid "app.subtitle"
+msgstr "Příprava podkladů k uzavření daňové evidence"
+
+msgid "nav.not_connected"
+msgstr "Nepřipojeno"
+
+msgid "nav.connecting"
+msgstr "Připojuji..."
+
+msgid "nav.connected"
+msgstr "Připojeno"
+
+msgid "nav.error"
+msgstr "Chyba"
+
+msgid "connection.panel_title"
+msgstr "Připojení k AbraFlexi"
+
+msgid "connection.server_url"
+msgstr "URL serveru"
+
+msgid "connection.company"
+msgstr "Firma (company)"
+
+msgid "connection.username"
+msgstr "Uživatel"
+
+msgid "connection.password"
+msgstr "Heslo"
+
+msgid "connection.fiscal_year"
+msgstr "Účetní rok"
+
+msgid "connection.test_btn"
+msgstr "Otestovat připojení"
+
+msgid "connection.success"
+msgstr "Připojení úspěšné"
+
+msgid "connection.no_data"
+msgstr "Žádná data"
+
+msgid "modules.panel_title"
+msgstr "Výstupy DE"
+
+msgid "modules.overview"
+msgstr "Souhrnný přehled"
+
+msgid "modules.overview_desc"
+msgstr "Všechny evidence"
+
+msgid "modules.receivables"
+msgstr "Pohledávky & Závazky"
+
+msgid "modules.receivables_desc"
+msgstr "Vydané / přijaté faktury"
+
+msgid "modules.assets"
+msgstr "Kniha majetku"
+
+msgid "modules.assets_desc"
+msgstr "Karty majetku a odpisy"
+
+msgid "modules.cash"
+msgstr "Pokladní kniha"
+
+msgid "modules.cash_desc"
+msgstr "Pohyby v pokladně"
+
+msgid "modules.bank"
+msgstr "Bankovní výpisy"
+
+msgid "modules.bank_desc"
+msgstr "Pohyby na BÚ"
+
+msgid "modules.contacts"
+msgstr "Adresář"
+
+msgid "modules.contacts_desc"
+msgstr "Dodavatelé & odběratelé"
+
+msgid "modules.inventory"
+msgstr "Inventura skladu"
+
+msgid "modules.inventory_desc"
+msgstr "Stav skladových karet"
+
+msgid "checklist.title"
+msgstr "Kontrolní seznam – závěrka DE"
+
+msgid "checklist.item1"
+msgstr "Zjištění informací k 31.12. – změny OSVČ"
+
+msgid "checklist.item2"
+msgstr "Ověření platnosti vnitřních předpisů (směrnic)"
+
+msgid "checklist.item3"
+msgstr "Provedení inventarizací a zápisy o inventuře"
+
+msgid "checklist.item4"
+msgstr "Rezervy – tvorba a rozpouštění"
+
+msgid "checklist.item5"
+msgstr "Kontrola daňové uznatelnosti příjmů a výdajů"
+
+msgid "checklist.item6"
+msgstr "Posouzení možnosti paušálních výdajů"
+
+msgid "checklist.item7"
+msgstr "Vytisknout peněžní deník s pokladními knihami"
+
+msgid "checklist.item8"
+msgstr "Kniha pohledávek a závazků – stavy po splatnosti"
+
+msgid "checklist.item9"
+msgstr "Kniha majetku a karty majetku (vč. leasingu)"
+
+msgid "checklist.item10"
+msgstr "Přijaté a vydané faktury – úplnost"
+
+msgid "checklist.item11"
+msgstr "Kontrola DPH přiznání a vyúčtování"
+
+msgid "checklist.item12"
+msgstr "Mzdy, zdravotní a sociální pojištění"
+
+msgid "empty.title"
+msgstr "Vyberte výstup a načtěte data"
+
+msgid "empty.desc"
+msgstr "Klikněte na modul v levém panelu a stiskněte „Načíst data""
+
+msgid "empty.btn"
+msgstr "Načíst data z AbraFlexi"
+
+msgid "empty.no_data"
+msgstr "Žádná data"
+
+msgid "table.export_csv"
+msgstr "CSV Export"
+
+msgid "table.records"
+msgstr "záznamů"
+
+msgid "stat.receivables_total"
+msgstr "Pohledávky celkem"
+
+msgid "stat.payables_total"
+msgstr "Závazky celkem"
+
+msgid "stat.unpaid_receivables"
+msgstr "Neuhrazené pohledávky"
+
+msgid "stat.unpaid_payables"
+msgstr "Neuhrazené závazky"
+
+msgid "stat.balance"
+msgstr "Saldo"
+
+msgid "stat.total_docs"
+msgstr "Celkem dokladů"
+
+msgid "stat.count"
+msgstr "Počet"
+
+msgid "stat.acquisition_cost"
+msgstr "Vstupní ceny celkem"
+
+msgid "stat.residual_value"
+msgstr "Zůstatkové ceny"
+
+msgid "stat.depreciation"
+msgstr "Odpisy celkem"
+
+msgid "stat.movements"
+msgstr "Počet pohybů"
+
+msgid "stat.income"
+msgstr "Příjmy"
+
+msgid "stat.expenses"
+msgstr "Výdaje"
+
+msgid "stat.contacts_count"
+msgstr "Počet kontaktů"
+
+msgid "stat.stock_cards"
+msgstr "Skladové karty"
+
+msgid "stat.stock_value"
+msgstr "Hodnota skladu"
+
+msgid "col.code"
+msgstr "Kód"
+
+msgid "col.company"
+msgstr "Firma"
+
+msgid "col.var_sym"
+msgstr "Var.sym."
+
+msgid "col.issue_date"
+msgstr "Dat.vyst."
+
+msgid "col.due_date"
+msgstr "Splatnost"
+
+msgid "col.amount"
+msgstr "Částka"
+
+msgid "col.status"
+msgstr "Stav"
+
+msgid "col.name"
+msgstr "Název"
+
+msgid "col.type"
+msgstr "Typ"
+
+msgid "col.acq_date"
+msgstr "Pořízení"
+
+msgid "col.acq_price"
+msgstr "Cena poř."
+
+msgid "col.residual"
+msgstr "Zůst.cena"
+
+msgid "col.depr_group"
+msgstr "Odp.sk."
+
+msgid "col.date"
+msgstr "Datum"
+
+msgid "col.description"
+msgstr "Popis"
+
+msgid "col.doc"
+msgstr "Doklad"
+
+msgid "col.reg_no"
+msgstr "IČO"
+
+msgid "col.vat_no"
+msgstr "DIČ"
+
+msgid "col.email"
+msgstr "E-mail"
+
+msgid "col.phone"
+msgstr "Tel."
+
+msgid "col.city"
+msgstr "Město"
+
+msgid "col.qty"
+msgstr "Množství"
+
+msgid "col.buy_price"
+msgstr "Nák.cena"
+
+msgid "col.sell_price"
+msgstr "Prod.cena"
+
+msgid "col.warehouse"
+msgstr "Sklad"
+
+msgid "status.paid"
+msgstr "uhrazeno"
+
+msgid "status.partial"
+msgstr "částečně"
+
+msgid "status.unpaid"
+msgstr "neuhrazeno"
+
+msgid "table.issued_invoices"
+msgstr "Vydané faktury – Pohledávky"
+
+msgid "table.received_invoices"
+msgstr "Přijaté faktury – Závazky"
+
+msgid "table.asset_register"
+msgstr "Kniha majetku"
+
+msgid "table.cash_book"
+msgstr "Pokladní kniha"
+
+msgid "table.bank_statements"
+msgstr "Bankovní výpisy"
+
+msgid "table.address_book"
+msgstr "Adresář"
+
+msgid "table.stock_inventory"
+msgstr "Inventura skladu"
+
+msgid "alert.export_done"
+msgstr "Export CSV dokončen"
+
+msgid "alert.no_export_data"
+msgstr "Žádná data k exportu"
+
+msgid "alert.loading"
+msgstr "Načítám data z AbraFlexi..."
+
+msgid "module.selected"
+msgstr "Modul vybrán"
+
+msgid "module.selected_desc"
+msgstr "Stiskněte tlačítko pro načtení dat z AbraFlexi"
