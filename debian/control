@@ -17,7 +17,7 @@ Depends:
  ${python3:Depends},
  python3-flask,
  python3-flask-babel,
- python3-abraflexi,
+ python3-abraflexi (>= 1.1.2),
  gunicorn
 Description: AbraFlexi Year-End closing preparation tool
  This application helps with tax-evidence year-end closing preparation

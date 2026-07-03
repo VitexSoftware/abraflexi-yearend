@@ -5,7 +5,8 @@ Webová aplikace pro přípravu podkladů k uzavření daňové evidence dle § 
 ## Instalace
 
 ```bash
-pip install flask python-abraflexi
+pip install -r requirements.txt
+# nebo: pip install flask "python-abraflexi>=1.1.2" flask-babel
 ```
 
 ## Spuštění
@@ -27,10 +28,30 @@ Aplikace poběží na: http://localhost:5050
 - **Adresář** – dodavatelé a odběratelé
 - **Inventura skladu** – stav skladových karet
 - **Export CSV** – každá evidence lze exportovat do CSV
-- **Kontrolní seznam** – interaktivní checklist závěrkových prací
+- **Kontrolní seznam** – interaktivní 18-bodový checklist závěrkových prací
+  (body 13 a 15 jsou napojeny na skutečné akce konce roku níže, zbytek jsou
+  ruční kroky vyžadující úsudek – inventury, rezervy, časové rozlišení)
+
+## Akce konce roku
+
+Na rozdíl od výše uvedených čistě čtecích přehledů provádí tyto akce
+skutečné zápisy do AbraFlexi a vyžadují uživatele s odpovídajícím
+oprávněním k zápisu:
+
+- **Inicializace účetního období** – převede konečné zůstatky do
+  následujícího účetního období. Lze spouštět opakovaně. Volitelně provede
+  přecenění neuhrazených dokladů v cizí měně (nejprve načtěte aktuální kurzy
+  tlačítkem „Zkontrolovat měny pro přecenění“; měna s chybějícím/nulovým
+  kurzem musí mít kurz zadaný ručně) a převod skladu. AbraFlexi zpracovává
+  inicializaci na pozadí (HTTP 202 Accepted) – aplikace průběžně kontroluje
+  dokončení, u větších dat to může chvíli trvat.
+- **Uzamknutí účetního období** – uzamkne období pro jeden nebo více modulů
+  dokladů (vydané/přijaté faktury, banka, pokladna, majetek atd.), takže
+  doklady již nelze upravovat. Je nutné vybrat alespoň jeden modul.
 
 ## Požadavky
 
 - Python 3.8+
 - flask
-- python-abraflexi
+- flask-babel
+- python-abraflexi >= 1.1.2

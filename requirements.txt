@@ -1,0 +1,4 @@
+flask
+flask-babel
+python-abraflexi>=1.1.2
+gunicorn

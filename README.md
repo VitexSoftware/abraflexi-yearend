@@ -16,7 +16,8 @@ sudo apt-get install -f
 ### From Source
 
 ```bash
-pip install flask python-abraflexi flask-babel
+pip install -r requirements.txt
+# or: pip install flask "python-abraflexi>=1.1.2" flask-babel
 ```
 
 ## Launch
@@ -95,11 +96,32 @@ To run the application in a production environment, it is recommended to use a w
 - **Address Book** – suppliers and customers
 - **Warehouse inventory** – stock card status
 - **Export CSV** – each record can be exported to CSV
-- **Checklist** – interactive thesis checklist
+- **Checklist** – interactive 18-step year-end checklist (items 13 and 15 are
+  wired to the real Year-End Actions below; the rest are manual/judgment
+  steps such as inventory counts, provisions and accruals)
+
+## Year-End Closing Actions
+
+Unlike the read-only dashboards above, these perform real write operations
+against AbraFlexi and require an AbraFlexi user with appropriate write
+permissions:
+
+- **Period Initialization** ("Inicializace následujícího účetního období") –
+  carries forward closing balances into the next accounting period. Can be
+  run repeatedly. Optionally revalues unpaid foreign-currency documents
+  (fetch current rates first via "Check currencies for revaluation"; any
+  currency with a missing/zero rate must have one entered manually) and
+  carries forward the warehouse. AbraFlexi processes this asynchronously
+  (HTTP 202 Accepted, background job) — the UI polls for completion and can
+  take a while on large datasets.
+- **Period Lock** ("Uzamknutí účetního období") – locks the accounting period
+  for one or more document modules (issued/received invoices, bank, cash,
+  assets, etc.) so documents can no longer be modified. At least one module
+  must be selected.
 
 ## Requirements
 
 - Python 3.8+
 - flask
 - flask-babel
-- python-abraflexi
+- python-abraflexi >= 1.1.2

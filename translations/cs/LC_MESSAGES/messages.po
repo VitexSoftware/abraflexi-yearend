@@ -141,6 +141,171 @@ msgstr "Kontrola DPH přiznání a vyúčtování"
 msgid "checklist.item12"
 msgstr "Mzdy, zdravotní a sociální pojištění"
 
+msgid "checklist.item13"
+msgstr "Spustit inicializaci účetního období (převod konečných zůstatků)"
+
+msgid "checklist.item14"
+msgstr "Vytvořit daňové přiznání"
+
+msgid "checklist.item15"
+msgstr "Uzamknout účetní období"
+
+msgid "checklist.item16"
+msgstr "Vyčíslit rozdíly mezi účetními a daňovými odpisy"
+
+msgid "checklist.item17"
+msgstr "Zkontrolovat návaznost hospodářského výsledku mezi rozvahou a výsledovkou"
+
+msgid "checklist.item18"
+msgstr "Zkontrolovat formální správnost zaúčtování"
+
+msgid "yearend.panel_title"
+msgstr "Akce konce roku"
+
+msgid "yearend.init_title"
+msgstr "Inicializace účetního období"
+
+msgid "yearend.init_desc"
+msgstr "Převede konečné zůstatky do následujícího účetního období. Lze spouštět opakovaně."
+
+msgid "yearend.currencies_btn"
+msgstr "Zkontrolovat měny pro přecenění"
+
+msgid "yearend.currency_needed"
+msgstr "Kurz je nutné zadat"
+
+msgid "yearend.opt_preceneni"
+msgstr "Přecenit neuhrazené doklady v cizí měně"
+
+msgid "yearend.opt_prevod_skladu"
+msgstr "Provést převod skladu"
+
+msgid "yearend.opt_vynechat_nulove"
+msgstr "Vynechat karty s nulovým zůstatkem"
+
+msgid "yearend.opt_zrusit_stare"
+msgstr "Zrušit nepoužívané staré karty v novém období"
+
+msgid "yearend.opt_dny_bez_pohybu"
+msgstr "Počet dnů bez pohybu (pro vynechání)"
+
+msgid "yearend.opt_typ_dokl"
+msgstr "Typ dokladu (leasingové závazky)"
+
+msgid "yearend.opt_ucetni_obdobi"
+msgstr "Kód účetního období (nepovinné, výchozí je aktuální)"
+
+msgid "yearend.run_init_btn"
+msgstr "Spustit inicializaci"
+
+msgid "yearend.init_pending"
+msgstr "Inicializace probíhá na serveru AbraFlexi…"
+
+msgid "yearend.init_done"
+msgstr "Inicializace účetního období dokončena"
+
+msgid "yearend.init_failed"
+msgstr "Inicializace účetního období selhala"
+
+msgid "yearend.init_accepted"
+msgstr "Inicializace přijata, probíhá na pozadí"
+
+msgid "yearend.lock_title"
+msgstr "Uzamknutí období"
+
+msgid "yearend.lock_desc"
+msgstr "Uzamkne účetní období, aby již nebylo možné doklady upravovat."
+
+msgid "yearend.lock_zamek_k"
+msgstr "Typ zámku"
+
+msgid "yearend.lock_state_open"
+msgstr "Otevřeno"
+
+msgid "yearend.lock_state_half"
+msgstr "Zamknuto mimo účetní"
+
+msgid "yearend.lock_state_locked"
+msgstr "Zamknuto"
+
+msgid "yearend.lock_plati_od"
+msgstr "Platí od"
+
+msgid "yearend.lock_plati_do"
+msgstr "Platí do"
+
+msgid "yearend.lock_neucetni"
+msgstr "Zamknout i neúčetní doklady"
+
+msgid "yearend.lock_modules_title"
+msgstr "Moduly k zamknutí"
+
+msgid "yearend.lock_select_all"
+msgstr "Vybrat vše"
+
+msgid "yearend.lock_select_none"
+msgstr "Zrušit výběr"
+
+msgid "yearend.lock_btn"
+msgstr "Uzamknout období"
+
+msgid "yearend.lock_success"
+msgstr "Období bylo úspěšně uzamknuto"
+
+msgid "yearend.lock_error_no_module"
+msgstr "Vyberte alespoň jeden modul k uzamknutí"
+
+msgid "zamek.module.modulFav"
+msgstr "Faktury vydané"
+
+msgid "zamek.module.modulFap"
+msgstr "Faktury přijaté"
+
+msgid "zamek.module.modulPhl"
+msgstr "Ostatní pohledávky"
+
+msgid "zamek.module.modulZav"
+msgstr "Ostatní závazky"
+
+msgid "zamek.module.modulBan"
+msgstr "Banka"
+
+msgid "zamek.module.modulPok"
+msgstr "Pokladna"
+
+msgid "zamek.module.modulInt"
+msgstr "Interní doklady"
+
+msgid "zamek.module.modulSkl"
+msgstr "Skladové pohyby"
+
+msgid "zamek.module.modulPpp"
+msgstr "Poptávky přijaté"
+
+msgid "zamek.module.modulPpv"
+msgstr "Poptávky vydané"
+
+msgid "zamek.module.modulNap"
+msgstr "Nabídky přijaté"
+
+msgid "zamek.module.modulNav"
+msgstr "Nabídky vydané"
+
+msgid "zamek.module.modulObp"
+msgstr "Objednávky přijaté"
+
+msgid "zamek.module.modulObv"
+msgstr "Objednávky vydané"
+
+msgid "zamek.module.modulMaj"
+msgstr "Majetek"
+
+msgid "zamek.module.modulLea"
+msgstr "Leasing"
+
+msgid "zamek.module.modulMzd"
+msgstr "Mzdy"
+
 msgid "empty.title"
 msgstr "Vyberte výstup a načtěte data"
 

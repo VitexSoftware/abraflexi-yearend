@@ -142,6 +142,171 @@ msgstr "VAT returns and settlements verification"
 msgid "checklist.item12"
 msgstr "Payroll, health and social insurance"
 
+msgid "checklist.item13"
+msgstr "Run period initialization (carry forward closing balances)"
+
+msgid "checklist.item14"
+msgstr "Create the tax return"
+
+msgid "checklist.item15"
+msgstr "Lock the accounting period"
+
+msgid "checklist.item16"
+msgstr "Reconcile depreciation differences (tax vs. accounting)"
+
+msgid "checklist.item17"
+msgstr "Verify continuity of the result between balance sheet and P&L"
+
+msgid "checklist.item18"
+msgstr "Verify formal correctness of postings"
+
+msgid "yearend.panel_title"
+msgstr "Year-End Actions"
+
+msgid "yearend.init_title"
+msgstr "Period Initialization"
+
+msgid "yearend.init_desc"
+msgstr "Carry forward closing balances into the next accounting period. Can be run repeatedly."
+
+msgid "yearend.currencies_btn"
+msgstr "Check currencies for revaluation"
+
+msgid "yearend.currency_needed"
+msgstr "Rate required"
+
+msgid "yearend.opt_preceneni"
+msgstr "Revalue unpaid foreign-currency documents"
+
+msgid "yearend.opt_prevod_skladu"
+msgstr "Carry forward warehouse"
+
+msgid "yearend.opt_vynechat_nulove"
+msgstr "Skip cards with zero balance"
+
+msgid "yearend.opt_zrusit_stare"
+msgstr "Remove unused old cards in the new period"
+
+msgid "yearend.opt_dny_bez_pohybu"
+msgstr "Days without movement (for skipping)"
+
+msgid "yearend.opt_typ_dokl"
+msgstr "Document type (lease liabilities)"
+
+msgid "yearend.opt_ucetni_obdobi"
+msgstr "Accounting period code (optional, defaults to current)"
+
+msgid "yearend.run_init_btn"
+msgstr "Run initialization"
+
+msgid "yearend.init_pending"
+msgstr "Initialization running on the AbraFlexi server..."
+
+msgid "yearend.init_done"
+msgstr "Period initialization completed"
+
+msgid "yearend.init_failed"
+msgstr "Period initialization failed"
+
+msgid "yearend.init_accepted"
+msgstr "Initialization accepted, running in the background"
+
+msgid "yearend.lock_title"
+msgstr "Period Lock"
+
+msgid "yearend.lock_desc"
+msgstr "Lock the accounting period so documents can no longer be modified."
+
+msgid "yearend.lock_zamek_k"
+msgstr "Lock type"
+
+msgid "yearend.lock_state_open"
+msgstr "Open"
+
+msgid "yearend.lock_state_half"
+msgstr "Locked except accounting"
+
+msgid "yearend.lock_state_locked"
+msgstr "Locked"
+
+msgid "yearend.lock_plati_od"
+msgstr "Valid from"
+
+msgid "yearend.lock_plati_do"
+msgstr "Valid to"
+
+msgid "yearend.lock_neucetni"
+msgstr "Also lock non-accounting documents"
+
+msgid "yearend.lock_modules_title"
+msgstr "Modules to lock"
+
+msgid "yearend.lock_select_all"
+msgstr "Select all"
+
+msgid "yearend.lock_select_none"
+msgstr "Select none"
+
+msgid "yearend.lock_btn"
+msgstr "Lock period"
+
+msgid "yearend.lock_success"
+msgstr "Period locked successfully"
+
+msgid "yearend.lock_error_no_module"
+msgstr "Select at least one module to lock"
+
+msgid "zamek.module.modulFav"
+msgstr "Issued invoices"
+
+msgid "zamek.module.modulFap"
+msgstr "Received invoices"
+
+msgid "zamek.module.modulPhl"
+msgstr "Other receivables"
+
+msgid "zamek.module.modulZav"
+msgstr "Other payables"
+
+msgid "zamek.module.modulBan"
+msgstr "Bank"
+
+msgid "zamek.module.modulPok"
+msgstr "Cash"
+
+msgid "zamek.module.modulInt"
+msgstr "Internal documents"
+
+msgid "zamek.module.modulSkl"
+msgstr "Warehouse movements"
+
+msgid "zamek.module.modulPpp"
+msgstr "Received inquiries"
+
+msgid "zamek.module.modulPpv"
+msgstr "Issued inquiries"
+
+msgid "zamek.module.modulNap"
+msgstr "Received offers"
+
+msgid "zamek.module.modulNav"
+msgstr "Issued offers"
+
+msgid "zamek.module.modulObp"
+msgstr "Received orders"
+
+msgid "zamek.module.modulObv"
+msgstr "Issued orders"
+
+msgid "zamek.module.modulMaj"
+msgstr "Assets"
+
+msgid "zamek.module.modulLea"
+msgstr "Leasing"
+
+msgid "zamek.module.modulMzd"
+msgstr "Payroll"
+
 msgid "empty.title"
 msgstr "Select an output and load data"
 
