@@ -390,7 +390,7 @@
           <span class="panel-title" data-i18n="yearend.panel_title">Year-End Actions</span>
         </div>
 
-        <div class="yearend-section">
+        <div class="yearend-section" id="yearend-init-section">
           <div class="yearend-section-title" data-i18n="yearend.init_title">Period Initialization</div>
           <div class="yearend-section-desc" data-i18n="yearend.init_desc"></div>
 
@@ -431,13 +431,32 @@
             <input type="text" id="ye-typ-dokl" placeholder="">
           </div>
 
+          <div class="yearend-section-title" style="font-size:12px;margin-top:16px" data-i18n="yearend.accounts_title">Double-entry bookkeeping accounts (optional)</div>
+          <div class="yearend-section-desc" data-i18n="yearend.accounts_desc"></div>
+          <div class="form-group">
+            <label data-i18n="yearend.opt_ucet_otv">Opening account</label>
+            <input type="text" id="ye-ucet-otv" placeholder="701000">
+          </div>
+          <div class="form-group">
+            <label data-i18n="yearend.opt_ucet_zav">Closing account</label>
+            <input type="text" id="ye-ucet-zav" placeholder="702000">
+          </div>
+          <div class="form-group">
+            <label data-i18n="yearend.opt_ucet_pre">Profit/loss transfer account</label>
+            <input type="text" id="ye-ucet-pre" placeholder="710000">
+          </div>
+          <div class="form-group">
+            <label data-i18n="yearend.opt_ucet_vys">Result-in-approval account</label>
+            <input type="text" id="ye-ucet-vys" placeholder="431000">
+          </div>
+
           <button class="btn btn-primary btn-full" id="ye-run-init-btn" onclick="runPeriodInit()">
             ▶ <span data-i18n="yearend.run_init_btn">Run initialization</span>
           </button>
           <div id="ye-init-status"></div>
         </div>
 
-        <div class="yearend-section">
+        <div class="yearend-section" id="yearend-lock-section">
           <div class="yearend-section-title" data-i18n="yearend.lock_title">Period Lock</div>
           <div class="yearend-section-desc" data-i18n="yearend.lock_desc"></div>
 
@@ -924,6 +943,10 @@ async function runPeriodInit() {
     zrusitStare: document.getElementById('ye-zrusit-stare').checked,
     dnyBezPohybu: document.getElementById('ye-dny-bez-pohybu').value || undefined,
     typDokl: document.getElementById('ye-typ-dokl').value.trim() || undefined,
+    ucetOtv: document.getElementById('ye-ucet-otv').value.trim() || undefined,
+    ucetZav: document.getElementById('ye-ucet-zav').value.trim() || undefined,
+    ucetPre: document.getElementById('ye-ucet-pre').value.trim() || undefined,
+    ucetVys: document.getElementById('ye-ucet-vys').value.trim() || undefined,
     rates: preceneni ? collectRates() : undefined,
   };
   btn.disabled = true;

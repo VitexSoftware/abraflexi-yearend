@@ -63,6 +63,9 @@ def i18n_catalogue():
         "yearend.opt_vynechat_nulove", "yearend.opt_zrusit_stare",
         "yearend.opt_dny_bez_pohybu", "yearend.opt_typ_dokl",
         "yearend.opt_ucetni_obdobi",
+        "yearend.accounts_title", "yearend.accounts_desc",
+        "yearend.opt_ucet_otv", "yearend.opt_ucet_zav",
+        "yearend.opt_ucet_pre", "yearend.opt_ucet_vys",
         "yearend.run_init_btn", "yearend.init_pending",
         "yearend.init_done", "yearend.init_failed", "yearend.init_accepted",
         "yearend.lock_title", "yearend.lock_desc",
@@ -287,6 +290,9 @@ def yearend_init():
         params = {"kontrolaZaokrouhleni": "false"}
         if data.get("ucetniObdobi"):
             params["ucetniObdobi"] = data["ucetniObdobi"]
+        for account_param in ("ucetOtv", "ucetZav", "ucetPre", "ucetVys"):
+            if data.get(account_param):
+                params[account_param] = data[account_param]
         for flag in ("preceneni", "prevodSkladu", "vynechatNulove", "zrusitStare"):
             if flag in data:
                 params[flag] = "true" if data[flag] else "false"
@@ -321,12 +327,15 @@ def yearend_init_status():
         ro = ReadOnly(options=build_conn_options(conn, evidence="ucetni-obdobi", throw=True))
         ro.default_url_params["detail"] = "custom:kod,lastUpdate"
         records = ro.get_all_from_abraflexi() or []
-        record = None
-        if period:
-            record = next((r for r in records if r.get("kod") == period), None)
-        if record is None and records:
-            record = records[0]
-        last_update = serialize_dates(record["lastUpdate"]) if record and record.get("lastUpdate") else None
+        candidates = [r for r in records if r.get("kod") == period] if period else records
+        last_updates = [
+            serialize_dates(r["lastUpdate"]) for r in candidates if r.get("lastUpdate")
+        ]
+        # No specific period is requested by default (it defaults to
+        # AbraFlexi's own "current" period), so watch every period's
+        # lastUpdate and report done once any of them advances past the
+        # trigger time, rather than guessing which single record to check.
+        last_update = max(last_updates) if last_updates else None
         done = bool(last_update and since and last_update > since)
         return jsonify({"success": True, "done": done, "lastUpdate": last_update})
     except Exception as e:

@@ -195,6 +195,24 @@ msgstr "Typ dokladu (leasingové závazky)"
 msgid "yearend.opt_ucetni_obdobi"
 msgstr "Kód účetního období (nepovinné, výchozí je aktuální)"
 
+msgid "yearend.accounts_title"
+msgstr "Účty podvojného účetnictví (nepovinné)"
+
+msgid "yearend.accounts_desc"
+msgstr "Vyžadováno pouze u firem s podvojným účetnictvím. U firem typu daňová evidence ponechte prázdné."
+
+msgid "yearend.opt_ucet_otv"
+msgstr "Účet otevření"
+
+msgid "yearend.opt_ucet_zav"
+msgstr "Účet uzavření"
+
+msgid "yearend.opt_ucet_pre"
+msgstr "Účet převodu hospodářského výsledku"
+
+msgid "yearend.opt_ucet_vys"
+msgstr "Účet výsledku hospodaření ve schvalovacím řízení"
+
 msgid "yearend.run_init_btn"
 msgstr "Spustit inicializaci"
 

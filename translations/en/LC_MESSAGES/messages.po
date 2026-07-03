@@ -196,6 +196,24 @@ msgstr "Document type (lease liabilities)"
 msgid "yearend.opt_ucetni_obdobi"
 msgstr "Accounting period code (optional, defaults to current)"
 
+msgid "yearend.accounts_title"
+msgstr "Double-entry bookkeeping accounts (optional)"
+
+msgid "yearend.accounts_desc"
+msgstr "Only required for double-entry bookkeeping companies. Leave blank for daňová evidence (tax-record) companies."
+
+msgid "yearend.opt_ucet_otv"
+msgstr "Opening account"
+
+msgid "yearend.opt_ucet_zav"
+msgstr "Closing account"
+
+msgid "yearend.opt_ucet_pre"
+msgstr "Profit/loss transfer account"
+
+msgid "yearend.opt_ucet_vys"
+msgstr "Result-in-approval account"
+
 msgid "yearend.run_init_btn"
 msgstr "Run initialization"
 

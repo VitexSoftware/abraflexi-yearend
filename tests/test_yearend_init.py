@@ -35,6 +35,37 @@ def test_init_trigger_success(client, connection, monkeypatch):
     assert instance.calls[0][1] == "inicializace-noveho-obdobi.json"
 
 
+def test_init_trigger_passes_double_entry_account_params(client, connection, monkeypatch):
+    fake = make_fake(True)
+    monkeypatch.setattr("python_abraflexi.ReadOnly", fake)
+
+    r = client.post("/api/yearend/init", json={
+        "connection": connection,
+        "ucetOtv": "701000", "ucetZav": "702000",
+        "ucetPre": "710000", "ucetVys": "431000",
+    })
+    d = r.get_json()
+
+    assert d["success"] is True
+    instance = fake.instances[0]
+    assert instance.default_url_params["ucetOtv"] == "701000"
+    assert instance.default_url_params["ucetZav"] == "702000"
+    assert instance.default_url_params["ucetPre"] == "710000"
+    assert instance.default_url_params["ucetVys"] == "431000"
+
+
+def test_init_trigger_omits_account_params_when_blank(client, connection, monkeypatch):
+    fake = make_fake(True)
+    monkeypatch.setattr("python_abraflexi.ReadOnly", fake)
+
+    r = client.post("/api/yearend/init", json={"connection": connection})
+    d = r.get_json()
+
+    assert d["success"] is True
+    instance = fake.instances[0]
+    assert "ucetOtv" not in instance.default_url_params
+
+
 def test_init_trigger_missing_currency_rate_surfaces_error(client, connection, monkeypatch):
     fake = make_fake(Exception("HTTP 400: chybí kurz pro měnu EUR"))
     monkeypatch.setattr("python_abraflexi.ReadOnly", fake)
@@ -74,3 +105,26 @@ def test_init_status_done(client, connection, monkeypatch):
 
     assert d["success"] is True
     assert d["done"] is True
+
+
+def test_init_status_without_period_code_checks_all_periods(client, connection, monkeypatch):
+    # Regression test: when no ucetniObdobi is given (the common case - it
+    # defaults to AbraFlexi's own "current" period), the endpoint must not
+    # just look at an arbitrary single record. AbraFlexi may report several
+    # period records and the one that actually got updated isn't
+    # necessarily the first one returned.
+    fake = make_fake([
+        {"kod": "2024", "lastUpdate": "2024-11-20T00:00:00"},
+        {"kod": "2025", "lastUpdate": "2026-01-01T00:00:00"},
+        {"kod": "2026", "lastUpdate": "2027-06-01T00:00:00"},
+    ])
+    monkeypatch.setattr("python_abraflexi.ReadOnly", fake)
+
+    r = client.post("/api/yearend/init-status", json={
+        "connection": connection, "since": "2027-01-01T00:00:00",
+    })
+    d = r.get_json()
+
+    assert d["success"] is True
+    assert d["done"] is True
+    assert d["lastUpdate"] == "2027-06-01T00:00:00"
