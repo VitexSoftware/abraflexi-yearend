@@ -2,4 +2,7 @@ app.py /usr/lib/abraflexi-yearend/
 wsgi.py /usr/lib/abraflexi-yearend/
 templates/* /usr/lib/abraflexi-yearend/templates/
 translations/* /usr/lib/abraflexi-yearend/translations/
+static/* /usr/lib/abraflexi-yearend/static/
 bin/abraflexi-yearend /usr/bin/
+abraflexi-yearend.svg /usr/share/icons/hicolor/scalable/apps/
+abraflexi-yearend.metainfo.xml /usr/share/metainfo/

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="console-application">
+  <id>io.github.vitexsoftware.abraflexi-yearend</id>
+  <metadata_license>MIT</metadata_license>
+  <project_license>MIT</project_license>
+  <name>AbraFlexi Year-End</name>
+  <summary>AbraFlexi Year-End closing preparation tool</summary>
+  <developer id="io.github.vitexsoftware">
+    <name>VitexSoftware</name>
+  </developer>
+  <description>
+    <p>
+      AbraFlexi Year-End is a web application that helps tax-evidence
+      (daňová evidence, §19 ZoÚ) companies prepare their AbraFlexi
+      accounting data for year-end closing.
+    </p>
+    <p>It provides read-only dashboards for:</p>
+    <ul>
+      <li>Receivables and payables (issued and received invoices)</li>
+      <li>Asset register and depreciation</li>
+      <li>Cash book</li>
+      <li>Bank statements</li>
+      <li>Address book</li>
+      <li>Warehouse inventory</li>
+    </ul>
+    <p>
+      It also performs real Year-End Actions directly against the
+      AbraFlexi REST API: period initialization and carry-forward of
+      closing balances (with optional foreign-currency revaluation), and
+      accounting period locking.
+    </p>
+    <p>
+      Run the <code>abraflexi-yearend</code> command to start the local
+      web server, then open it in a browser.
+    </p>
+  </description>
+  <launchable type="service">abraflexi-yearend.service</launchable>
+  <provides>
+    <binary>abraflexi-yearend</binary>
+  </provides>
+  <url type="homepage">https://github.com/VitexSoftware/abraflexi-yearend</url>
+  <url type="bugtracker">https://github.com/VitexSoftware/abraflexi-yearend/issues</url>
+  <icon type="stock">abraflexi-yearend</icon>
+  <categories>
+    <category>Office</category>
+    <category>Finance</category>
+  </categories>
+  <screenshots>
+    <screenshot type="default">
+      <caption>Dashboard with live receivables, payables and cash-book data loaded from AbraFlexi</caption>
+      <image type="source" width="1400" height="900">https://raw.githubusercontent.com/VitexSoftware/abraflexi-yearend/main/docs/images/en/03-dashboard.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Year-End Actions: a real accounting period lock executed successfully</caption>
+      <image type="source" width="1400" height="900">https://raw.githubusercontent.com/VitexSoftware/abraflexi-yearend/main/docs/images/en/10-period-lock-success.png</image>
+    </screenshot>
+  </screenshots>
+  <releases>
+    <release version="0.2.0" date="2026-07-03"/>
+  </releases>
+  <content_rating type="oars-1.1"/>
+</component>
