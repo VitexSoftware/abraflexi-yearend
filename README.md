@@ -1,3 +1,5 @@
+<img src="abraflexi-yearend.svg" width="120" align="right" alt="AbraFlexi Year-End logo">
+
 # AbraFlexi Closing DE
 
 Web application for preparing documents for closing tax records according to Section 19 of the Tax Code.

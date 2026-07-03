@@ -1,3 +1,5 @@
+<img src="abraflexi-yearend.svg" width="120" align="right" alt="Logo AbraFlexi Year-End">
+
 # AbraFlexi Závěrka DE
 
 Webová aplikace pro přípravu podkladů k uzavření daňové evidence dle § 19 ZoÚ.
