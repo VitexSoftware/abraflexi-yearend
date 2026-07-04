@@ -1,3 +1,13 @@
+abraflexi-yearend (0.2.1) unstable; urgency=medium
+
+  * Fix debian/abraflexi-yearend.install shadowing debian/install, which
+    caused the package to ship without app.py, wsgi.py, templates,
+    static, or translations. Remove duplicate abraflexi-yearend-
+    fireworks.svg (identical to abraflexi-yearend.svg, referenced by
+    AppStream metadata).
+
+ -- Vítězslav Dvořák <info@vitexsoftware.cz>  Sat, 04 Jul 2026 09:05:51 +0200
+
 abraflexi-yearend (0.2.0) unstable; urgency=low
 
   * Initial release. Closes: #nnnn
