@@ -6,7 +6,7 @@ After=network.target
 EnvironmentFile=-/etc/abraflexi-yearend/env
 User=www-data
 WorkingDirectory=/usr/lib/abraflexi-yearend
-ExecStart=/usr/bin/gunicorn -b :8911 -w 4 wsgi:app
+ExecStart=/usr/bin/gunicorn -b :8911 -w 4 wsgi:application
 Restart=always
 
 [Install]

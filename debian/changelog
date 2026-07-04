@@ -1,3 +1,11 @@
+abraflexi-yearend (0.2.2) unstable; urgency=medium
+
+  * Fix systemd unit invoking gunicorn as wsgi:app; wsgi.py exposes
+    'application', not 'app', causing the service to crash-loop on every
+    start.
+
+ -- Vítězslav Dvořák <info@vitexsoftware.cz>  Sat, 04 Jul 2026 09:40:19 +0200
+
 abraflexi-yearend (0.2.1) unstable; urgency=medium
 
   * Fix debian/abraflexi-yearend.install shadowing debian/install, which
