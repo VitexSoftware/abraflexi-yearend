@@ -5,6 +5,7 @@ Maintainer: Vítězslav Dvořák <info@vitexsoftware.cz>
 Build-Depends:
  debhelper-compat (= 13),
  dh-python,
+ python3-babel,
 Standards-Version: 4.7.0
 Homepage: https://github.com/VitexSoftware/abraflexi-yearend
 Rules-Requires-Root: no

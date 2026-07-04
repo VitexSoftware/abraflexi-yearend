@@ -1,3 +1,12 @@
+abraflexi-yearend (0.2.3) unstable; urgency=medium
+
+  * Compile .mo translation catalogs during the build (pybabel compile -
+    d translations) instead of relying on committed binaries; *.mo is
+    gitignored so the package previously shipped only .po sources and
+    localization silently fell back to raw msgid keys.
+
+ -- Vítězslav Dvořák <info@vitexsoftware.cz>  Sat, 04 Jul 2026 11:31:38 +0200
+
 abraflexi-yearend (0.2.2) unstable; urgency=medium
 
   * Fix systemd unit invoking gunicorn as wsgi:app; wsgi.py exposes
